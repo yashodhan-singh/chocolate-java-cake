@@ -1,0 +1,35 @@
+{"recipe_book":
+  [
+      {
+        "id": 0,
+        "name":"Recipe1",
+        "description": "Turkey, spinach and mascarpone  cheese come together as a satisfying filling for soft corn tortillas in this simple recipe. For authentic flair, serve the cheesy taquitos with chunky salsa and fresh guacamole.",
+        "ingredients": ["Vegetable oil cooking spray",
+                        "3 tablespoons extra-virgin olive oil",
+                        "1 large onion, minced", "1 tablespoon kosher salt"],
+        "instructions": ["First", "Second"]
+
+      },
+      {
+        "id": 1,
+        "name":"Recipe2",
+        "description": "Giada De Laurentiis dresses up mild turkey meat with onion, garlic, parsley and cheese to make rich, moist meatballs.",
+        "ingredients": ["1 small onion, grated",
+                        "3 garlic cloves, minced",
+                        "1/4 cup dried bread crumbs"],
+        "instructions": ["First", "Second", "Third", "...more"]
+
+      },
+      {
+        "id": 2,
+        "name":"Recipe3",
+        "description": "Smoked paprika gives the sauce for this stew an exotic edge and deep, woodsy flavor, which partners perfectly with herb-flecked turkey meatballs.",
+        "ingredients": ["2 14-ounce cans low-sodium diced fire-roasted tomatoes",
+                        "2 cups low-sodium chicken broth",
+                        "1 15-ounce can chickpeas, drained and rinsed"],
+        "instructions": ["First"]
+      }
+  ]
+
+
+}
