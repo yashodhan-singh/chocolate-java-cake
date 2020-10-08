@@ -9,10 +9,10 @@ Our confluence board, which contains the instructions of how to use our applicat
 
 ### Running the .java file on command line: 
 3 files are involved which have to be within the same dir:
-  - json-simple-1.1.jar (the jar file includes json-simple library)
-  - RecipeBook.java (which includes another Recipe object class)
-  - recipebook.json
-Compilation: 
--javac -cp .:json-simple-1.1.jar RecipeBook.java
-Running: 
--java -cp .:json-simple-1.1.jar RecipeBook
+  1. json-simple-1.1.jar (the jar file includes json-simple library)
+  2. RecipeBook.java (which includes another Recipe object class)
+  3. recipebook.json
+  - Compilation: 
+     - javac -cp .:json-simple-1.1.jar RecipeBook.java
+  - Running: 
+     - java -cp .:json-simple-1.1.jar RecipeBook
