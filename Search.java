@@ -1,3 +1,7 @@
+// the code below may not work until the RecipeBook class is created and compiled 
+// by Martin Wu on 10/08/2020
+
+import java.util.*;
 public class Search {
 	private String searchStr;
 	private RecipeBook recipeBook;
@@ -9,9 +13,12 @@ public class Search {
 	/**
 	* This method compares the two strings and calculate the minimum edit distance 
 	* with the dynamic programming algorithm
+    * @param String The recipe name in the Recipe object
+    * @return minimal edit distance from recipe name to search string
 	*/
-	public int compare(String inputStr, String recipeName) {
-		int m = inputStr.length();
+	public int compare(String recipeName) {
+
+		int m = searchStr.length();
         int n = recipeName.length();
         
         int[][] cost = new int[m + 1][n + 1];
@@ -22,7 +29,7 @@ public class Search {
         
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
-                if(inputStr.charAt(i) == recipeName.charAt(j))
+                if(searchStr.toLowerCase().charAt(i) == recipeName.toLowerCase().charAt(j))
                     cost[i + 1][j + 1] = cost[i][j];
                 else {
                     int a = cost[i][j];
@@ -40,12 +47,25 @@ public class Search {
     * This method searches throught the RecipeBook (Array of Recipe). 
     * It calculates the Levenshetin distance
     * show the usage of various javadoc Tags.
-    * @param String This is the recipe name the user wants to search for
-    * @param RecipeBook This is the array list of Recipe objects
     * @param int The top K Recipe names that need least edit distance from Recipe name to the search string
-    * @return RecipeBook The top K array
+    * @return RecipeBook The top K Recipe objects whose name fuzzy match the search string
     */
     public RecipeBook extractTop(int k) {
+    	if (k <= 0) {
+    		return null;
+    	}
+    	ArrayList<Recipe> res = new ArrayList<Recipe>();
+    	Map<Integer, Recipe> map = new HashMap<Integer, Recipe>();
+    	int[] editDistanceArr = new int[recipeBook.size()];
+    	for (int i = 0; i < recipeBook.size(); i++) {
+    		editDistanceArr[i] = compare(recipeBook.get(i).getName());
+    		map.put(editDistanceArr[i], recipeBook.get(i));
+    	}
+    	Arrays.sort(editDistanceArr);
+    	for (int j = 0; j < k; j++) {
+    		res.add(map.get(editDistanceArr[j]));
+    	}
 
+    	return res;
     }
 }
