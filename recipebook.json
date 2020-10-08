@@ -1,4 +1,4 @@
-{"recipe_book":
+
   [
       {
         "id": 0,
@@ -30,6 +30,3 @@
         "instructions": ["First"]
       }
   ]
-
-
-}
