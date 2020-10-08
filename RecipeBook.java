@@ -11,7 +11,7 @@ import org.json.simple.parser.*;
 public class RecipeBook  { 
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
     public static void main(String[] args) throws Exception  { 
-        read_json("recipe.json");
+        read_json("recipebook.json");
         for (int i = 0; i < recipe_book.size(); i++) {
         	System.out.println(recipe_book.get(i).getIngredients()[0]);
         }
