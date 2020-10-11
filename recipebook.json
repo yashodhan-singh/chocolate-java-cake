@@ -1,32 +1,77 @@
-
-  [
+[
       {
         "id": 0,
-        "name":"Recipe1",
-        "description": "Turkey, spinach and mascarpone  cheese come together as a satisfying filling for soft corn tortillas in this simple recipe. For authentic flair, serve the cheesy taquitos with chunky salsa and fresh guacamole.",
-        "ingredients": ["Vegetable oil cooking spray",
-                        "3 tablespoons extra-virgin olive oil",
-                        "1 large onion, minced", "1 tablespoon kosher salt"],
-        "instructions": ["First", "Second"]
-
+        "name": "Chocolate Lava Cakes",
+        "description": "A chocolate lava cake recipe that will melt right in your mouth.",
+        "ingredients": ["Baking spray, for spraying custard cups",
+                        "1 stick butter",
+                        "2 ounces bittersweet chocolate", 
+                        "2 ounces semisweet chocolate",
+                        "1 1/4 cups powdered sugar", 
+                        "2 whole eggs",
+                        "3 egg yolks", 
+                        "1 teaspoon vanilla",
+                        "1/2 cup all-purpose flour", 
+			"Vanilla ice cream, for serving"],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+ 			"Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
       },
+
+
+
       {
         "id": 1,
-        "name":"Recipe2",
-        "description": "Giada De Laurentiis dresses up mild turkey meat with onion, garlic, parsley and cheese to make rich, moist meatballs.",
-        "ingredients": ["1 small onion, grated",
-                        "3 garlic cloves, minced",
-                        "1/4 cup dried bread crumbs"],
-        "instructions": ["First", "Second", "Third", "...more"]
+        "name": "Coconut Flan",
+        "description": "A simple and easy flan recipe that is rich in flavor and a great dessert option.",
+        "ingredients": ["Vegetable oil cooking spray",
+                        "1 cup cajeta* or caramel sauce, at room temperature",
+                        "3 (14-ounce) cans sweetened condensed milk",
+                        "1 (14-ounce) can unsweetened coconut milk",
+                        "1 (12-ounce) can evaporated milk",
+                        "6 large eggs, at room temperature",
+                        "1 tablespoon vanilla extract",
+                        "1/2 teaspoon salt",
+                        "1/2 cup shredded sweetened coconut, toasted"],
+        "instructions": ["First: Preheat the oven to 350 degrees F. Spray a 10-cup Bundt or tube pan with vegetable oil cooking spray.",
+			"Second: Drizzle the cajeta into the prepared pan, turning to coat the bottom and sides. Set aside.",
+			"Third: Using an electric mixer, beat the milks, eggs, vanilla extract, and salt. Pour the mixture into the pan. Place the pan inside a large roasting pan. Fill the roasting pan with enough water to come halfway up the sides. Cover the Bundt pan with foil.",
+			"Fourth: Bake until the center jiggles slightly when pan is moved, about 1 hour 40 minutes. Remove from the oven and let cool at room temperature for 30 minutes. Refrigerate, covered, for 3 hours or overnight.",
+			"Fifth: Turn the flan out onto a platter. Sprinkle with toasted coconut and serve."]
 
       },
+
+
+
       {
         "id": 2,
-        "name":"Recipe3",
-        "description": "Smoked paprika gives the sauce for this stew an exotic edge and deep, woodsy flavor, which partners perfectly with herb-flecked turkey meatballs.",
-        "ingredients": ["2 14-ounce cans low-sodium diced fire-roasted tomatoes",
-                        "2 cups low-sodium chicken broth",
-                        "1 15-ounce can chickpeas, drained and rinsed"],
-        "instructions": ["First"]
+        "name": "Southern Red Velvet Cake",
+        "description": "A yummy and delectable dessert to celebrate any special occasion, or just for anyone in the mood for a cake! (The last four ingredients are to be used with the last two steps of the recipe in order to make the cream cheese frosting)",
+        "ingredients": ["Vegetable oil for the pans",
+                        "2 1/2 cups all-purpose flour",
+                        "1 1/2 cups sugar",
+                        "1 teaspoon baking soda",
+                        "1 teaspoon fine salt",
+                        "1 teaspoon cocoa powder",
+                        "1 1/2 cups vegetable oil",
+                        "1 cup buttermilk, at room temperature",
+                        "2 large eggs, at room temperature",
+                        "2 tablespoons red food coloring (1 ounce)",
+                        "1 teaspoon white distilled vinegar",
+                        "1 teaspoon vanilla extract",
+                        "Cream Cheese Frosting, recipe follows",
+                        "Crushed pecans, for garnish",
+                        "1 pound cream cheese, softened",
+                        "4 cups sifted confectioners' sugar",
+                        "2 sticks unsalted butter (1 cup), softened",
+                        "1 teaspoon vanilla extract"],
+        "instructions": ["First: Preheat the oven to 350 degrees F. Lightly oil and flour three 9 by 1 1/2-inch round cake pans.",
+			"Second: In a large bowl, sift together the flour, sugar, baking soda, salt, and cocoa powder. In another large bowl, whisk together the oil, buttermilk, eggs, food coloring, vinegar, and vanilla.",
+			"Third: Using a standing mixer, mix the dry ingredients into the wet ingredients until just combined and a smooth batter is formed.",
+			"Fourth: Divide the cake batter evenly among the prepared cake pans. Place the pans in the oven evenly spaced apart. Bake, rotating the pans halfway through the cooking, until the cake pulls away from the side of the pans, and a toothpick inserted in the center of the cakes comes out clean, about 30 minutes.",
+			"Fifth: Remove the cakes from the oven and run a knife around the edges to loosen them from the sides of the pans. One at a time, invert the cakes onto a plate and then re-invert them onto a cooling rack, rounded-sides up. Let cool completely.",
+			"Sixth: Frost the cake. Place 1 layer, rounded-side down, in the middle of a rotating cake stand. Using a palette knife or offset spatula spread some of the Cream Cheese Frosting over the top of the cake. (Spread enough frosting to make a 1/4 to 1/2-inch layer.) Carefully set another layer on top, rounded-side down, and repeat. Top with the remaining layer and cover the entire cake with the remaining frosting. Sprinkle the top with the pecans.",
+			"Seventh: In a standing mixer fitted with the paddle attachment, or with a hand-held electric mixer in a large bowl, mix the cream cheese, sugar, and butter on low speed until incorporated. Increase the speed to high, and mix until light and fluffy, about 5 minutes. (Occasionally turn the mixer off, and scrape the down the sides of the bowl with a rubber spatula.)",
+			"Eighth: Reduce the speed of the mixer to low. Add the vanilla, raise the speed to high and mix briefly until fluffy (scrape down the bowl occasionally). Store in the refrigerator until somewhat stiff, before using. May be stored in the refrigerator for 3 days."]
       }
-  ]
+ ]
