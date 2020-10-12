@@ -52,4 +52,20 @@ public class Recipe {
     public void setInstructions(String[] instructions) {
         this.instructions = instructions;
     }
+
+    public void printAll() {
+        System.out.println(this.name);
+        System.out.println(this.description);
+        System.out.println();
+        System.out.println("INGREDIENTS");
+        for (String element: this.ingredients) {
+            System.out.println(element);
+        }
+        System.out.println();
+        System.out.println("INSTRUCITONS");
+        for (String element: this.instructions) {
+            System.out.println(element);
+        }
+        System.out.println();
+    }
 }

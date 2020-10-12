@@ -14,18 +14,14 @@ public class RecipeBook  {
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
     public static void main(String[] args) throws Exception  { 
         read_json("../recipebook.json"); //reads recipebook.json and builds recipebook 
+        int recipeIndex = 1000; //used to indicate which recipe is currently being read
+        int currStep = 0; //used to indicate which step is currently being read
         
-        /*//prints first element of ith recipe's ingredients
-        for (int i = 0; i < recipe_book.size(); i++) {
-        	System.out.println(recipe_book.get(i).getIngredients()[0]);
-        }*/
-        
-        //basic i/o
+        //i/o
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome to Chocolate Java Cake's Recipe Book! Type 'h' or 'help' for a list of commands");
         
         while(true) {
-        	
         	String s = in.nextLine();
         	
         	//help
@@ -34,24 +30,53 @@ public class RecipeBook  {
         		System.out.println("'s' or 'search' to search for a recipe");
         	}
         	
-        	//browse
-        	if(s.equals("b")||s.equals("browse")) {
-        		System.out.println("Choose a recipe from the list below by entering the corresponding number");
-        		for(int i = 0; i <recipe_book.size(); i++) {
-        			System.out.println((i+1) + ". " + recipe_book.get(i).getName());
-        		}
-        		
-        		int recipeIndex = Integer.parseInt(in.nextLine()) - 1;
-        		
-        		//print entire recipe
-        		System.out.println(s);
-        	}
-        	//search
-        	if(s.equals("s")||s.equals("search")) {
-        		System.out.println("Enter the recipe you would like to search for:");
-                String searchStr = in.nextLine();
-                // apply fuzzy search here
-        	}
+        	//browse all recipes
+            if(s.equals("b")||s.equals("browse") || s.equals("B")) {
+                System.out.println("Choose a recipe from the list below by entering the corresponding number");
+                for(int i = 0; i <recipe_book.size(); i++) {
+                    System.out.println((i+1) + ". " + recipe_book.get(i).getName());
+                }
+                recipeIndex = Integer.parseInt(in.nextLine()) - 1;
+                currStep = 0;
+                //print entire recipe
+                recipe_book.get(recipeIndex).printAll();
+                System.out.println("Enjoy! Type 'i' to view instructions individually");
+            }
+
+            //initiate the step-by-step printout process
+            if(s.equals("i") || s.equals("I")) {
+                System.out.println("Step by step view. Type 'n' or 'next' to view the next instruction.");
+                System.out.println(recipe_book.get(recipeIndex).getInstructions()[currStep]);
+            }
+
+            //print the next step
+            if((s.equals("n") || s.equals("N")) && currStep < recipe_book.get(recipeIndex).getIngredients().length) {
+                currStep++;
+                if(currStep == recipe_book.get(recipeIndex).getInstructions().length) {
+                    System.out.println("That was the last step, enjoy! Type 'h' or 'help' for a list of commands");
+                } else {
+                    System.out.println(recipe_book.get(recipeIndex).getInstructions()[currStep]);
+                }
+            }
+
+            //search
+            if(s.equals("s")||s.equals("search")) {
+                System.out.println("Enter the recipe you would like to search for:");
+                String searchStr = in.nextLine(); //user inputs the query
+
+                ArrayList<Recipe> results = extractTop(3, searchStr); //extractTop is used to return top 3 in order, but always returns same 3 no matter what. Try 'Red' and 'Lava'
+                System.out.println("Choose a recipe from the list below by entering the corresponding number");
+                for(int i = 0; i <results.size(); i++) {
+                    System.out.println((i+1) + ". " + results.get(i).getName());
+                }
+
+                recipeIndex = Integer.parseInt(in.nextLine()) - 1;
+                currStep = 0;
+
+                //print entire recipe
+                results.get(recipeIndex).printAll();
+                System.out.println("Enjoy! Type 'i' to view instructions individually");
+            }
         	
         }
         
