@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 // import java.util.ArrayList;
@@ -10,14 +11,24 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject; 
 import org.json.simple.parser.*; 
 
+
 public class RecipeBook  { 
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
-    public static void main(String[] args) throws Exception  { 
-        read_json("../recipebook.json"); //reads recipebook.json and builds recipebook 
+    public static void main(String[] args) throws Exception  {
+    	//String filename = "./recipebook.json";
+        read_json("./recipebook.json"); //reads recipebook.json and builds recipebook 
         int recipeIndex = 1000; //used to indicate which recipe is currently being read
         int currStep = 0; //used to indicate which step is currently being read
         
-        //i/o
+       // Recipe rp = new Recipe();
+        //rp.setId(id);
+        //rp.setDescription("test_description1");
+       // rp.setIngredients(new String [] {"1", "2", "3"});
+      //  rp.setInstructions(new String [] {"4", "5", "6"});
+      //  rp.printAll();
+        //addRecipe(rp, "./recipebook.json");
+        
+        // i/o
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome to Chocolate Java Cake's Recipe Book! Type 'h' or 'help' for a list of commands");
         
@@ -78,7 +89,7 @@ public class RecipeBook  {
                 System.out.println("Enjoy! Type 'i' to view instructions individually");
             }
         	
-        }
+        } 
         
         
         
@@ -170,5 +181,66 @@ public class RecipeBook  {
 
         return res;
     }
+    
+    public static void addRecipe(Recipe r, String filename) throws FileNotFoundException, IOException, ParseException
+    {
+    	
+    	//recipe_book.add(r); // store it locally, so the user can see the new recipe.
+    	
+    	FileWriter file = null;
+    	Object obj = new JSONParser().parse(new FileReader(filename)); 
+        JSONArray book = (JSONArray) obj; 
+        r.setId(book.size()); // Need to set the id for our new entry.
+        
+        
+        // New entry
+        JSONObject entry = new JSONObject();
+        entry.put("id", r.getId());
+        entry.put("name", r.getName());
+        entry.put("description", r.getDescription());
+        entry.put("favorite", r.getFavorite());
+        
+        // Taking care of the arrays
+        JSONArray ingredients = new JSONArray();
+        
+        for (int i = 0; i < r.getIngredients().length; i++)
+        {
+        	ingredients.add(r.getIngredients()[i]);
+        }
+        
+        JSONArray instructions = new JSONArray();
+        
+        for (int i = 0; i < r.getInstructions().length; i++)
+        {
+        	instructions.add(r.getInstructions()[i]);
+        }
+        
+        // Putting the last key-value pairs together
+        entry.put("ingredients", ingredients);
+        entry.put("instructions", instructions);
+       
+        book.add(entry);
+        //System.out.println(book.toJSONString());
+        try 
+        {
+        	 
+            // Constructs a FileWriter given a file name, using the platform's default charset
+            file = new FileWriter(filename);
+            file.write(book.toJSONString());
+            
+        } 
+        
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        } 
+        
+        finally 
+        {
+                file.flush();
+                file.close();
+        }
+    }
+    
 
 }
