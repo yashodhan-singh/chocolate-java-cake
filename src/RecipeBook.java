@@ -13,7 +13,7 @@ import org.json.simple.parser.*;
 public class RecipeBook  { 
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
     public static void main(String[] args) throws Exception  { 
-        read_json("../recipebook.json"); //reads recipebook.json and builds recipebook 
+        read_json("recipebook.json"); //reads recipebook.json and builds recipebook 
         
         /*//prints first element of ith recipe's ingredients
         for (int i = 0; i < recipe_book.size(); i++) {
@@ -51,10 +51,17 @@ public class RecipeBook  {
         		System.out.println("Enter the recipe you would like to search for:");
                 String searchStr = in.nextLine();
                 // apply fuzzy search here
+                ArrayList<Recipe> res = extractTop(2, searchStr);
+                
+                for(Recipe recipe: res) {
+                    System.out.println("here" + recipe.getName());
+                }
+
         	}
         	
         }
-        
+
+        return;
         
         
     }
@@ -106,7 +113,7 @@ public class RecipeBook  {
         
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
-                if(searchStr.toLowerCase().charAt(i) == recipeName.toLowerCase().charAt(j))
+                if(searchStr.charAt(i) == recipeName.charAt(j))
                     cost[i + 1][j + 1] = cost[i][j];
                 else {
                     int a = cost[i][j];
@@ -131,16 +138,31 @@ public class RecipeBook  {
         if (k <= 0) {
             return null;
         }
-        ArrayList<Recipe> res = new ArrayList<Recipe>();
-        Map<Integer, Recipe> map = new HashMap<Integer, Recipe>();
-        int[] editDistanceArr = new int[recipe_book.size()];
-        for (int i = 0; i < recipe_book.size(); i++) {
-            editDistanceArr[i] = compare(recipe_book.get(i).getName(), searchStr);
-            map.put(editDistanceArr[i], recipe_book.get(i));
+        ArrayList<Recipe> res = new ArrayList<Recipe>(recipe_book);
+        // Map<Integer, Recipe> map = new HashMap<Integer, Recipe>();
+        // int[] editDistanceArr = new int[recipe_book.size()];
+        // for (int i = 0; i < recipe_book.size(); i++) {
+
+        //     if (recipe_book.get(i).getName().toLowerCase().contains(searchStr.toLowerCase())) {
+        //         editDistanceArr[i] = 0;
+        //     } else {
+        //         editDistanceArr[i] = compare(recipe_book.get(i).getName().toLowerCase(), searchStr.toLowerCase());    
+        //     }
+        //     System.out.println(recipe_book.get(i).getName());
+        //     map.put(recipe_book.get(i), editDistanceArr[i]);
+        // }
+        // Arrays.sort(editDistanceArr);
+        for (Recipe recipe: recipe_book) {
+            if (recipe.getName().contains(searchStr)) {
+                recipe.setEditDistance(0);
+            }else {
+                recipe.setEditDistance(compare(recipe.getName(), searchStr));
+            }
+            
         }
-        Arrays.sort(editDistanceArr);
+        Collections.sort(recipe_book);
         for (int j = 0; j < k; j++) {
-            res.add(map.get(editDistanceArr[j]));
+            res.add(recipe_book.get(j));
         }
 
         return res;
