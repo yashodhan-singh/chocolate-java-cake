@@ -15,17 +15,20 @@ public class RecipeBook  {
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
     public static void main(String[] args) throws Exception  {
     	//String filename = "./recipebook.json";
-        read_json("./recipebook.json"); //reads recipebook.json and builds recipebook 
+        
+        // !!!!!!!!! It seems that the path is different if you are running this on Eclipse or just with command line
+        // so be careful. use ../recipebook.json if you run the program with run.sh
+        read_json("../recipebook.json"); //reads recipebook.json and builds recipebook 
         int recipeIndex = 1000; //used to indicate which recipe is currently being read
         int currStep = 0; //used to indicate which step is currently being read
         
-       // Recipe rp = new Recipe();
-        //rp.setId(id);
-        //rp.setDescription("test_description1");
-       // rp.setIngredients(new String [] {"1", "2", "3"});
-      //  rp.setInstructions(new String [] {"4", "5", "6"});
-      //  rp.printAll();
-        //addRecipe(rp, "./recipebook.json");
+        // Recipe rp = new Recipe();
+        // rp.setId(6);
+        // rp.setDescription("test_description2");
+        // rp.setIngredients(new String [] {"1", "2", "3"});
+        // rp.setInstructions(new String [] {"4", "5", "6"});
+        // rp.printAll();
+        // addRecipe(rp, "../recipebook.json");
         
         // i/o
         Scanner in = new Scanner(System.in);
