@@ -5,6 +5,10 @@ public class Recipe {
     private String[] ingredients;
     private String[] instructions;
     
+    public Recipe ()
+    {
+    	
+    }
     public Recipe(int id, String name, String description, String[] ingredients, String[] instructions) {
         this.id = id;
         this.name = name;
