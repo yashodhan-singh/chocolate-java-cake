@@ -16,6 +16,7 @@
         "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
                         "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
  			"Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+        ,"favorite": false
       },
 
 
@@ -38,7 +39,7 @@
 			"Third: Using an electric mixer, beat the milks, eggs, vanilla extract, and salt. Pour the mixture into the pan. Place the pan inside a large roasting pan. Fill the roasting pan with enough water to come halfway up the sides. Cover the Bundt pan with foil.",
 			"Fourth: Bake until the center jiggles slightly when pan is moved, about 1 hour 40 minutes. Remove from the oven and let cool at room temperature for 30 minutes. Refrigerate, covered, for 3 hours or overnight.",
 			"Fifth: Turn the flan out onto a platter. Sprinkle with toasted coconut and serve."]
-
+        ,"favorite": false
       },
 
 
@@ -73,5 +74,130 @@
 			"Sixth: Frost the cake. Place 1 layer, rounded-side down, in the middle of a rotating cake stand. Using a palette knife or offset spatula spread some of the Cream Cheese Frosting over the top of the cake. (Spread enough frosting to make a 1/4 to 1/2-inch layer.) Carefully set another layer on top, rounded-side down, and repeat. Top with the remaining layer and cover the entire cake with the remaining frosting. Sprinkle the top with the pecans.",
 			"Seventh: In a standing mixer fitted with the paddle attachment, or with a hand-held electric mixer in a large bowl, mix the cream cheese, sugar, and butter on low speed until incorporated. Increase the speed to high, and mix until light and fluffy, about 5 minutes. (Occasionally turn the mixer off, and scrape the down the sides of the bowl with a rubber spatula.)",
 			"Eighth: Reduce the speed of the mixer to low. Add the vanilla, raise the speed to high and mix briefly until fluffy (scrape down the bowl occasionally). Store in the refrigerator until somewhat stiff, before using. May be stored in the refrigerator for 3 days."]
-      }
+        ,"favorite": false
+      },
+      {
+        "id": 3,
+        "name": "Beef Pho",
+        "description": "Beef pho is one of the most delicious dish in Vietnam.",
+        "ingredients": ["Baking spray, for spraying custard cups",
+                        "1 stick butter",
+                        "2 ounces bittersweet chocolate", 
+                        "2 ounces semisweet chocolate",
+                        "1 1/4 cups powdered sugar", 
+                        "2 whole eggs",
+                        "3 egg yolks", 
+                        "1 teaspoon vanilla",
+                        "1/2 cup all-purpose flour", 
+            "Vanilla ice cream, for serving"],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+            "Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+        ,"favorite": false
+      },
+      {
+        "id": 4,
+        "name": "Peperoni Pizza",
+        "description": "Best seller in Joe's pizza.",
+        "ingredients": ["Baking spray, for spraying custard cups",
+                        "1 stick butter",
+                        "2 ounces bittersweet chocolate", 
+                        "2 ounces semisweet chocolate",
+                        "1 1/4 cups powdered sugar", 
+                        "2 whole eggs",
+                        "3 egg yolks", 
+                        "1 teaspoon vanilla",
+                        "1/2 cup all-purpose flour", 
+            "Vanilla ice cream, for serving"],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+            "Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+      ,"favorite": false
+      },
+      {
+        "id": 5,
+        "name": "Grilled Basin Chicken",
+        "description": "Chicken is delicious!",
+        "ingredients": ["¾ cup balsamic vinegar",
+                        "¼ cup tightly packed fresh basil leaves, orange quote icon gently rub produce under cold running water.",
+                        "2 tbsp olive oil"
+                        "1 garlic clove, minced"
+                        "½ tsp salt"
+                        "4 plum tomatoes, orange quote icon scrubbed with clean vegetable brush under running water.",
+                        "4 boneless skinless chicken breast halves (4 ounces each)"
+                    ],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+        "Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+      ,"favorite": false
+      },
+      {
+        "id": 6,
+        "name": "Moroccans Chicken With Eggplant-Zucchini Ragout",
+        "description": "some jibberish..",
+        "ingredients": ["¾ cup balsamic vinegar",
+                        "¼ cup tightly packed fresh basil leaves, orange quote icon gently rub produce under cold running water.",
+                        "2 tbsp olive oil"
+                        "1 garlic clove, minced"
+                        "½ tsp salt"
+                        "4 plum tomatoes, orange quote icon scrubbed with clean vegetable brush under running water.",
+                        "4 boneless skinless chicken breast halves (4 ounces each)"
+                    ],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+        "Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+      ,"favorite": false
+      },
+      {
+        "id": 8,
+        "name": "Green Beans With Bacon And New Potatoes",
+        "description": "Get fresh potatoes and bacon!",
+        "ingredients": ["¾ cup balsamic vinegar",
+                        "¼ cup tightly packed fresh basil leaves, orange quote icon gently rub produce under cold running water.",
+                        "2 tbsp olive oil"
+                        "1 garlic clove, minced"
+                        "½ tsp salt"
+                        "4 plum tomatoes, orange quote icon scrubbed with clean vegetable brush under running water.",
+                        "4 boneless skinless chicken breast halves (4 ounces each)"
+                    ],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+        "Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+      ,"favorite": false
+      },
+      {
+        "id": 9,
+        "name": "Poached Eggs Over Collard Greens & Shiitake Mushrooms",
+        "description": "Get fresh potatoes and bacon!",
+        "ingredients": ["¾ cup balsamic vinegar",
+                        "¼ cup tightly packed fresh basil leaves, orange quote icon gently rub produce under cold running water.",
+                        "2 tbsp olive oil"
+                        "1 garlic clove, minced"
+                        "½ tsp salt"
+                        "4 plum tomatoes, orange quote icon scrubbed with clean vegetable brush under running water.",
+                        "4 boneless skinless chicken breast halves (4 ounces each)"
+                    ],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+        "Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+      ,"favorite": false
+      },
+      {
+        "id": 10,
+        "name": "Strawberry Smoothie",
+        "description": "Get fresh potatoes and bacon!",
+        "ingredients": ["¾ cup balsamic vinegar",
+                        "¼ cup tightly packed fresh basil leaves, orange quote icon gently rub produce under cold running water.",
+                        "2 tbsp olive oil"
+                        "1 garlic clove, minced"
+                        "½ tsp salt"
+                        "4 plum tomatoes, orange quote icon scrubbed with clean vegetable brush under running water.",
+                        "4 boneless skinless chicken breast halves (4 ounces each)"
+                    ],
+        "instructions": ["First: Preheat the oven to 425 degrees F. Spray four custard cups with baking spray and place on a baking sheet.",
+                        "Second: Microwave the butter, bittersweet chocolate and semisweet chocolate in a large bowl on high until the butter is melted, about 1 minute. Whisk until the chocolate is also melted. Stir in the sugar until well blended. Whisk in the eggs and egg yolks, then add the vanilla. Stir in the flour. Divide the mixture among the custard cups.", 
+        "Third: Bake until the sides are firm and the centers are soft, about 13 minutes. Let stand 1 minute. Invert on individual plates while warm and serve with vanilla ice cream."]
+      ,"favorite": false
+      },
+
  ]

@@ -1,10 +1,9 @@
-public class Recipe implements Comparable<Recipe> {
+public class Recipe{
     private int id;
     private String name;
     private String description;
     private String[] ingredients;
     private String[] instructions;
-    private int editDistance;
     public Recipe(int id, String name, String description, String[] ingredients, String[] instructions) {
         this.id = id;
         this.name = name;
@@ -51,15 +50,5 @@ public class Recipe implements Comparable<Recipe> {
 
     public void setInstructions(String[] instructions) {
         this.instructions = instructions;
-    }
-    public int getEditDistance() {
-        return editDistance;
-    }
-    public int setEditDistance(int editDistance) {
-        this.editDistance = editDistance;
-    }
-    @Override
-    public int compareTo(Recipe recipe) {
-        return Integer.compare(editDistance, recipe.getEditDistance());
     }
 }
