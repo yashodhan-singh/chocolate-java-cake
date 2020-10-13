@@ -3,79 +3,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-<<<<<<< HEAD
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 // fuzzy search package
 import me.xdrop.fuzzywuzzy.*;
 import me.xdrop.fuzzywuzzy.model.*;
-public class RecipeBook {
-    public static ArrayList < Recipe > recipe_book = new ArrayList < Recipe > ();
-    public static void main(String[] args) throws Exception {
-        read_json("recipebook.json"); //reads recipebook.json and builds recipebook 
-
-        /*//prints first element of ith recipe's ingredients
-        for (int i = 0; i < recipe_book.size(); i++) {
-            System.out.println(recipe_book.get(i).getIngredients()[0]);
-        }*/
-
-        //basic i/o
-        Scanner in = new Scanner(System.in);
-        System.out.println("Welcome to Chocolate Java Cake's Recipe Book! Type 'h' or 'help' for a list of commands");
-
-        while (true) {
-
-            String s = in .nextLine();
-
-            //help
-            if (s.equals("h") || s.equals("help")) {
-                System.out.println("'b' or 'browse' to browse all recipes");
-                System.out.println("'s' or 'search' to search for a recipe");
-            }
-
-            //browse
-            if (s.equals("b") || s.equals("browse")) {
-                System.out.println("Choose a recipe from the list below by entering the corresponding number");
-                for (int i = 0; i < recipe_book.size(); i++) {
-                    System.out.println((i + 1) + ". " + recipe_book.get(i).getName());
-                }
-
-                int recipeIndex = Integer.parseInt( in .nextLine()) - 1;
-
-                //print entire recipe
-                System.out.println(s);
-            }
-            //search
-            if (s.equals("s") || s.equals("search")) {
-                System.out.println("Enter the recipe you would like to search for:");
-                String searchStr = in.nextLine();
-                // apply fuzzy search here
-                ArrayList<String> recipeNames = new ArrayList<String>();
-                for (Recipe r: recipe_book) {
-                    recipeNames.add(r.getName());
-                }
-                // return top 3 most similar results 
-                List<ExtractedResult> resList = FuzzySearch.extractTop(searchStr, recipeNames, 3); 
-                // print them out 
-                System.out.println("Here's what we got.");
-                for (int i = 0; i < resList.size(); i++) {
-                    String index = Integer.toString(i + 1);
-                    System.out.println(index + ". " + resList.get(i).getString());
-                }
-            }
-
-        }
-
-=======
-// import java.util.ArrayList;
-// import java.util.Iterator; 
-// import java.util.Scanner;
-// import java.util.Map;
-import org.json.simple.JSONArray; 
-import org.json.simple.JSONObject; 
-import org.json.simple.parser.*; 
-
+ 
 
 public class RecipeBook  { 
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
@@ -136,26 +70,25 @@ public class RecipeBook  {
             }
 
             //search
-            if(s.equals("s")||s.equals("search")) {
+            if (s.equals("s") || s.equals("search")) {
                 System.out.println("Enter the recipe you would like to search for:");
-                String searchStr = in.nextLine(); //user inputs the query
-
-                ArrayList<Recipe> results = extractTop(3, searchStr); //extractTop is used to return top 3 in order, but always returns same 3 no matter what. Try 'Red' and 'Lava'
-                System.out.println("Choose a recipe from the list below by entering the corresponding number");
-                for(int i = 0; i <results.size(); i++) {
-                    System.out.println((i+1) + ". " + results.get(i).getName());
+                String searchStr = in.nextLine();
+                // apply fuzzy search here
+                ArrayList<String> recipeNames = new ArrayList<String>();
+                for (Recipe r : recipe_book) {
+                    recipeNames.add(r.getName());
                 }
-
-                recipeIndex = Integer.parseInt(in.nextLine()) - 1;
-                currStep = 0;
-
-                //print entire recipe
-                results.get(recipeIndex).printAll();
-                System.out.println("Enjoy! Type 'i' to view instructions individually");
+                // return top 3 most similar results
+                List<ExtractedResult> resList = FuzzySearch.extractTop(searchStr, recipeNames, 3);
+                // print them out
+                System.out.println("Here's what we got.");
+                for (int i = 0; i < resList.size(); i++) {
+                    String index = Integer.toString(i + 1);
+                    System.out.println(index + ". " + resList.get(i).getString());
+                }
             }
         	
         } 
->>>>>>> main
         
 
 
@@ -189,12 +122,6 @@ public class RecipeBook  {
     }
 
 
-<<<<<<< HEAD
-
-=======
-        return res;
-    }
-    
     public static void addRecipe(Recipe r, String filename) throws FileNotFoundException, IOException, ParseException
     {
     	
@@ -254,7 +181,6 @@ public class RecipeBook  {
                 file.close();
         }
     }
->>>>>>> main
     
 
 }

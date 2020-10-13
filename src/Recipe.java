@@ -4,7 +4,7 @@ public class Recipe{
     private String description;
     private String[] ingredients;
     private String[] instructions;
-    
+    private boolean favorite;
     public Recipe ()
     {
     	
@@ -71,5 +71,8 @@ public class Recipe{
             System.out.println(element);
         }
         System.out.println();
+    }
+    public boolean getFavorite() {
+        return this.favorite;
     }
 }
