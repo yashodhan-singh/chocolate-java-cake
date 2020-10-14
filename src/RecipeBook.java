@@ -9,7 +9,7 @@ import org.json.simple.parser.*;
 // fuzzy search package
 import me.xdrop.fuzzywuzzy.*;
 import me.xdrop.fuzzywuzzy.model.*;
- 
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RecipeBook  { 
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
@@ -18,7 +18,7 @@ public class RecipeBook  {
         
         // !!!!!!!!! It seems that the path is different if you are running this on Eclipse or just with command line
         // so be careful. use ../recipebook.json if you run the program with run.sh
-        read_json("../recipebook.json"); //reads recipebook.json and builds recipebook 
+        read_json("./recipebook.json"); //reads recipebook.json and builds recipebook 
         int recipeIndex = 1000; //used to indicate which recipe is currently being read
         int currStep = 0; //used to indicate which step is currently being read
         
@@ -90,6 +90,10 @@ public class RecipeBook  {
                     System.out.println(index + ". " + resList.get(i).getString());
                 }
             }
+            // get random recipe
+            if (s.equals("r") || s.equals("random")) {
+                System.out.println("The random recipe for you today is " + getRandomRecipe().getName());
+            }
         	
         } 
         
@@ -124,6 +128,12 @@ public class RecipeBook  {
         recipe_book.add(new_recipe);
     }
 
+    
+    public static Recipe getRandomRecipe() {
+        int randomNum = ThreadLocalRandom.current().nextInt(0, recipe_book.size());
+        // System.out.println(randomNum);
+        return recipe_book.get(randomNum);
+    }
 
     public static void addRecipe(Recipe r, String filename) throws FileNotFoundException, IOException, ParseException
     {
