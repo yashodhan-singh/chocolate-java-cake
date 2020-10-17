@@ -22,6 +22,11 @@ public class RecipeBook  {
         int recipeIndex = 1000; //used to indicate which recipe is currently being read
         int currStep = 0; //used to indicate which step is currently being read
         
+
+
+        int updateID = 0;
+        String updateField = null;
+        String updateData = null;
         // Recipe rp = new Recipe();
         // rp.setId(6);
         // rp.setDescription("test_description2");
@@ -41,7 +46,41 @@ public class RecipeBook  {
         	if(s.equals("h") || s.equals("help")) {
         		System.out.println("'b' or 'browse' to browse all recipes");
         		System.out.println("'s' or 'search' to search for a recipe");
+                System.out.println("'u' or 'update' to update a recipe");
         	}
+
+            if(s.equals("u") || s.equals("update")) {
+                System.out.println("What is the index of the recipe you would like to update?");
+                Scanner inputInt = new Scanner(System.in);
+                updateID =  inputInt.nextInt();
+                recipe_book.get(updateID);
+                System.out.println("Is the field you want to update a string or array? Enter 'str' for string or 'arr' for array.");
+                String field1 = in.nextLine();
+                if(field1.equals("str")) {
+
+                System.out.println("Do you want to update the name or description?");
+                String field2 = in.nextLine();
+                updateField = field2;
+
+                System.out.println("Please enter the data you would like to update in this field");
+                String field3 = in.nextLine();
+                updateData = field3;
+
+                } else if (s.equals("arr")) {
+
+                }                      
+
+                updateRecipe(updateField,updateData,updateID); //for updating string field of recipe
+
+                // System.out.println(updateData + " " + updateField + " did it work lol " + updateID);
+
+
+                // System.out.println(recipe_book.get(recipeIndex).getInstructions()[currStep]);
+            }
+
+            if (s.equals("exit") ) {
+                System.exit(0);
+            }
         	
         	//browse all recipes
             if(s.equals("b")||s.equals("browse") || s.equals("B")) {
@@ -183,6 +222,20 @@ public class RecipeBook  {
                 file.flush();
                 file.close();
         }
+    }
+
+
+
+        public static void updateRecipe(String oldFieldName, String newFieldData, int fieldID) throws FileNotFoundException, IOException, ParseException
+    {
+        // r.getId(fieldID);
+        if (oldFieldName.equals("name") || oldFieldName.equals("Name")) {
+            r.setName(newFieldData);
+
+        } else if (oldFieldName.equals("description") || oldFieldName.equals("Description")) {
+            r.setDescription(newFieldData);
+        }
+
     }
     
 
