@@ -22,7 +22,7 @@ public class RecipeBook  {
         int recipeIndex = 1000; //used to indicate which recipe is currently being read
         int currStep = 0; //used to indicate which step is currently being read
     
-        
+       
         // i/o
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome to Chocolate Java Cake's Recipe Book! Type 'h' or 'help' for a list of commands");
@@ -174,6 +174,7 @@ public class RecipeBook  {
             if (s.equals("f") || s.equals("favorite")) {
                 System.out.println("Here is your favorite list: \n");
                 for (Recipe r: recipe_book) {
+                    
                     if (r.getFavorite()) {
                         System.out.println(r.getName());
                     }
@@ -211,7 +212,7 @@ public class RecipeBook  {
             Integer.valueOf(recipe.get("id").toString()),
             (String) recipe.get("name"),
             (String) recipe.get("description"),
-            ingredients, instructions);
+            ingredients, instructions, (boolean) recipe.get("favorite"));
         recipe_book.add(new_recipe);
     }
 
