@@ -58,7 +58,10 @@ public class Recipe{
     }
 
     public void printAll() {
+        System.out.println("------------------------------------------------------");
+        System.out.println("NAME");
         System.out.println(this.name);
+        System.out.println("DESCRIPTION");
         System.out.println(this.description);
         System.out.println();
         System.out.println("INGREDIENTS");
@@ -70,7 +73,11 @@ public class Recipe{
         for (String element: this.instructions) {
             System.out.println(element);
         }
+        System.out.println("------------------------------------------------------");
         System.out.println();
+    }
+    public void setFavorite(boolean isFavorite) {
+        this.favorite = isFavorite;
     }
     public boolean getFavorite() {
         return this.favorite;
