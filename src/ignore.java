@@ -9,13 +9,11 @@ import org.json.simple.parser.*;
 // fuzzy search package
 import me.xdrop.fuzzywuzzy.*;
 import me.xdrop.fuzzywuzzy.model.*;
+ 
 
-
-public class RecipeBook  
-    {
+public class RecipeBook  { 
 	public static ArrayList<Recipe> recipe_book = new ArrayList<Recipe>();
-    public static void main(String[] args) throws Exception  
-        {
+    public static void main(String[] args) throws Exception  {
     	//String filename = "./recipebook.json";
         
         // !!!!!!!!! It seems that the path is different if you are running this on Eclipse or just with command line
@@ -41,77 +39,53 @@ public class RecipeBook
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome to Chocolate Java Cake's Recipe Book! Type 'h' or 'help' for a list of commands");
         
-        while(true) 
-            {
+        while(true) {
         	String s = in.nextLine();
         	
         	//help
-        	if(s.equals("h") || s.equals("help")) 
-            {
+        	if(s.equals("h") || s.equals("help")) {
         		System.out.println("'b' or 'browse' to browse all recipes");
         		System.out.println("'s' or 'search' to search for a recipe");
                 System.out.println("'u' or 'update' to update a recipe");
         	}
 
-            if(s.equals("u") || s.equals("update")) 
-            {
+            if(s.equals("u") || s.equals("update")) {
                 System.out.println("What is the index of the recipe you would like to update?");
                 Scanner inputInt = new Scanner(System.in);
                 updateID =  inputInt.nextInt();
-                // recipe_book.get(updateID);
-
+                recipe_book.get(updateID);
                 System.out.println("Is the field you want to update a string or array? Enter 'str' for string or 'arr' for array.");
                 String field1 = in.nextLine();
+                if(field1.equals("str")) {
 
-                if (field1.equals("str")) 
-                {
+                System.out.println("Do you want to update the name or description?");
+                String field2 = in.nextLine();
+                updateField = field2;
 
-                    System.out.println("Do you want to update the name or description?");
-                    String field2 = in.nextLine();
-                    updateField = field2;
+                System.out.println("Please enter the data you would like to update in this field");
+                String field3 = in.nextLine();
+                updateData = field3;
 
-                    System.out.println("Please enter the data you would like to update in this field");
-                    String field3 = in.nextLine();
-                    updateData = field3;
+                } else if (s.equals("arr")) {
 
-                    updateRecipeStr(updateField,updateData,recipe_book.get(updateID)); //for updating string field of recipe
-                
-                }
-                else if (s.equals("arr")) 
-                {
-                    System.out.println("Do you want to update the name or description?");
-                    String field2 = in.nextLine();
-                    updateField = field2;
+                }                      
 
-                    System.out.println("Please enter the data you would like to update in this field");
-                    String field3 = in.nextLine();
-                    updateData = field3;
+                updateRecipe(updateField,updateData,updateID); //for updating string field of recipe
 
-                    updateRecipeArr (updateField,updateData,updateID); //for updating string field of recipe
-                }
-
-                
                 // System.out.println(updateData + " " + updateField + " did it work lol " + updateID);
+
+
                 // System.out.println(recipe_book.get(recipeIndex).getInstructions()[currStep]);
             }
 
-
-            if (s.equals("exit") ) 
-            {
+            if (s.equals("exit") ) {
                 System.exit(0);
             }
-
-
-            // if (s.equals("test")) {
-            //     recipe_book.get(1).printAll();
-            // }
         	
         	//browse all recipes
-            if(s.equals("b")||s.equals("browse") || s.equals("B")) 
-            {
+            if(s.equals("b")||s.equals("browse") || s.equals("B")) {
                 System.out.println("Choose a recipe from the list below by entering the corresponding number");
-                for(int i = 0; i <recipe_book.size(); i++) 
-                {
+                for(int i = 0; i <recipe_book.size(); i++) {
                     System.out.println((i+1) + ". " + recipe_book.get(i).getName());
                 }
                 recipeIndex = Integer.parseInt(in.nextLine()) - 1;
@@ -128,42 +102,39 @@ public class RecipeBook
             }
 
             //print the next step
-            if ( (s.equals("n") || s.equals("N")) && (currStep < recipe_book.get(recipeIndex).getIngredients().length)) 
-                {
-                    currStep++;
-                    if(currStep == recipe_book.get(recipeIndex).getInstructions().length) 
-                    {
-                        System.out.println("That was the last step, enjoy! Type 'h' or 'help' for a list of commands");
-                    } else 
-                        {
-                        System.out.println(recipe_book.get(recipeIndex).getInstructions()[currStep]);
-                        }
+            if((s.equals("n") || s.equals("N")) && currStep < recipe_book.get(recipeIndex).getIngredients().length) {
+                currStep++;
+                if(currStep == recipe_book.get(recipeIndex).getInstructions().length) {
+                    System.out.println("That was the last step, enjoy! Type 'h' or 'help' for a list of commands");
+                } else {
+                    System.out.println(recipe_book.get(recipeIndex).getInstructions()[currStep]);
                 }
+            }
 
             //search
-            if (s.equals("s") || s.equals("search")) 
-            {
+            if (s.equals("s") || s.equals("search")) {
                 System.out.println("Enter the recipe you would like to search for:");
                 String searchStr = in.nextLine();
                 // apply fuzzy search here
                 ArrayList<String> recipeNames = new ArrayList<String>();
-                for (Recipe r : recipe_book) 
-                {
+                for (Recipe r : recipe_book) {
                     recipeNames.add(r.getName());
-                }  
+                }
                 // return top 3 most similar results
                 List<ExtractedResult> resList = FuzzySearch.extractTop(searchStr, recipeNames, 3);
                 // print them out
                 System.out.println("Here's what we got.");
-                for (int i = 0; i < resList.size(); i++) 
-                {
+                for (int i = 0; i < resList.size(); i++) {
                     String index = Integer.toString(i + 1);
                     System.out.println(index + ". " + resList.get(i).getString());
                 }
             }
+        	
+        } 
+        
 
-}
-}
+
+    }
 
     //reads json file
     public static void read_json(String filename) throws FileNotFoundException, IOException, ParseException {
@@ -239,12 +210,12 @@ public class RecipeBook
             file = new FileWriter(filename);
             file.write(book.toJSONString());
             
-        }
+        } 
         
         catch (IOException e) 
         {
             e.printStackTrace();
-        }
+        } 
         
         finally 
         {
@@ -255,48 +226,17 @@ public class RecipeBook
 
 
 
-    public static void updateRecipeStr(String oldFieldName, String newFieldData, Recipe r) throws FileNotFoundException, IOException, ParseException
-    {
-        // r.getId(fieldID);
-        // Object obj = new JSONParser().parse(new FileReader("../recipebook.json"));
-        // JSONArray book = (JSONArray) obj;
-        // parseRecipe((JSONObject) book.get(fieldID));
-
-        //recipe_book.get(1).printAll();
-
-        // getId(fieldID);
-
-        FileReader reader = new FileReader(("../recipebook.json")); //filepath 
-        JSONParser jsonparser = new JSONParser();
-        JSONObject jsonobject = (JSONObject) jsonparser.parse(reader);
-        System.out.println(jsonobject);
-
-       JSONObject idobj = 
-        (
-         (JSONObject) ( (JSONObject) ( (JSONObject) ( (JSONObject) ( (JSONObject) jsonobject.get("id") ).get("name") ).get("description") ).get("ingredients") ).get("instructions") 
-        );
-
-        idobj.put("name", newFieldData);
-
-        System.out.println("After ID value updated : " + jsonobject);
-
-        // if (oldFieldName.equals("name") || oldFieldName.equals("Name")) {
-        //     r.setName(newFieldData);
-
-
-        // } else if (oldFieldName.equals("description") || oldFieldName.equals("Description")) {
-        //     r.setDescription(newFieldData);
-        // }
-
-    }
-
-    public static void updateRecipeArr(String oldFieldName, String newFieldData, int fieldID) throws FileNotFoundException, IOException, ParseException
+        public static void updateRecipe(String oldFieldName, String newFieldData, int fieldID) throws FileNotFoundException, IOException, ParseException
     {
         // r.getId(fieldID);
         if (oldFieldName.equals("name") || oldFieldName.equals("Name")) {
-            // r.setName(newFieldData);
+            r.setName(newFieldData);
 
         } else if (oldFieldName.equals("description") || oldFieldName.equals("Description")) {
-            // r.setDescription(newFieldData);
+            r.setDescription(newFieldData);
         }
+
     }
+    
+
+}
