@@ -36,6 +36,7 @@ public class RecipeBook  {
         		System.out.println("'s' or 'search' to search for a recipe");
                 System.out.println("'a' or 'add' to add a new recipe");
                 System.out.println("'r' or 'random' to get a recipe");
+                System.out.println("'f' or 'favorite' to get your favorite recipe list");
                 System.out.println("'s' or 'search' to search for a recipe");
         	}
         	// add new recipe
@@ -63,7 +64,7 @@ public class RecipeBook  {
                 next = "";
                 while(!next.equals("done")) {
                     next = in.nextLine();
-                    System.out.println(next);
+                    
                     if (next.equals("done")) {
                         break;
                     }
@@ -72,8 +73,11 @@ public class RecipeBook  {
                 }
                 String[] instructionsArr = instructions.split("\n");
                 System.out.println("Success!");
-                read_json("./recipebook.json"); //read again because of the new updates 
+              
                 addRecipe(name, description, ingredientsArr, instructionsArr, "./recipebook.json");
+
+                recipe_book = new ArrayList<Recipe>(); // clear recipe_book for new updates
+                read_json("./recipebook.json"); //read again because of the new updates 
             }
         	//browse all recipes
             if(s.equals("b")||s.equals("browse") || s.equals("B")) {
@@ -81,20 +85,27 @@ public class RecipeBook  {
                 for(int i = 0; i <recipe_book.size(); i++) {
                     System.out.println((i+1) + ". " + recipe_book.get(i).getName());
                 }
-                try {
-                    recipeIndex = Integer.parseInt(in.nextLine()) - 1;   
-                    currStep = 0;
-                    //print entire recipe
-                    recipe_book.get(recipeIndex).printAll();
-                    System.out.println("Do you want to favorite this recipe? Type 'yes' or 'no' ");
-                    if (in.nextLine().equals("yes")) {
-                        recipe_book.get(recipeIndex).setFavorite(true);
+                while(true) {
+                    try {
+                        recipeIndex = Integer.parseInt(in.nextLine()) - 1;   
+                        currStep = 0;
+                        //print entire recipe
+                        recipe_book.get(recipeIndex).printAll();
+                        if (!recipe_book.get(recipeIndex).getFavorite()) {
+                            System.out.println("Do you want to favorite this recipe? Type 'yes' or 'no' ");
+                            if (in.nextLine().equals("yes")) {
+                                recipe_book.get(recipeIndex).setFavorite(true);
+                            }
+                        }
+                       
+                        System.out.println("Enjoy! Type 'i' to view instructions individually."); 
+                        break;
                     }
-                    System.out.println("Enjoy! Type 'i' to view instructions individually."); 
+                    catch (NumberFormatException ex){
+                        System.out.println("Oops. You should enter a number.");
+                    }
                 }
-                catch (NumberFormatException ex){
-                    System.out.println("Oops. You should enter a number.");
-                }
+                
                
             }
          
@@ -246,9 +257,9 @@ public class RecipeBook  {
         
         JSONArray instructions = new JSONArray();
         
-        for (int i = 0; i < ingredientsArr.length; i++)
+        for (int i = 0; i < instructionsArr.length; i++)
         {
-        	instructions.add(ingredientsArr[i]);
+        	instructions.add(instructionsArr[i]);
         }
         
         // Putting the last key-value pairs together
