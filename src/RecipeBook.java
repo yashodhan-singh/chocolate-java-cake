@@ -91,14 +91,11 @@ public class RecipeBook  {
                         currStep = 0;
                         //print entire recipe
                         recipe_book.get(recipeIndex).printAll();
-                        if (!recipe_book.get(recipeIndex).getFavorite()) {
-                            System.out.println("Do you want to favorite this recipe? Type 'yes' or 'no' ");
-                            if (in.nextLine().equals("yes")) {
-                                recipe_book.get(recipeIndex).setFavorite(true);
-                            }
-                        }
-                       
+
                         System.out.println("Enjoy! Type 'i' to view instructions individually."); 
+                        if (!recipe_book.get(recipeIndex).getFavorite()) {
+                            System.out.println("Type 'af' to add this recipe to your favorite list.");
+                        }
                         break;
                     }
                     catch (NumberFormatException ex){
@@ -109,7 +106,16 @@ public class RecipeBook  {
                
             }
          
-
+            if (s.equals("af")) {
+                if (recipeIndex == 1000) {
+                    System.out.println("Oops. You can't favorite a recipe because you haven't chosen a recipe yet.");
+                    continue;
+                }
+                recipe_book.get(recipeIndex).setFavorite(true);
+                favoriteRecipe(recipeIndex); //set favorite attribute in the recipe json object 
+                recipe_book = new ArrayList<Recipe>();
+                read_json("./recipebook.json"); // update recipe book
+            }
             //initiate the step-by-step printout process
             if(s.equals("i") || s.equals("I")) {
                 if (recipeIndex == 1000) {
@@ -130,6 +136,7 @@ public class RecipeBook  {
 
             //search
             if (s.equals("s") || s.equals("search")) {
+
                 System.out.println("Enter the recipe you would like to search for:");
                 String searchStr = in.nextLine();
                 // apply fuzzy search here
@@ -145,20 +152,29 @@ public class RecipeBook  {
                     String index = Integer.toString(i + 1);
                     System.out.println(index + ". " + resList.get(i).getString());
                 }
+                int searchIndex = 0;
+                
                 System.out.println("Which one would you like to choose?");
-                while (true) {
-                    try
-                    {
-                        recipeIndex = Integer.parseInt(in.nextLine()) - 1;
-                        recipe_book.get(recipeIndex).printAll();
-                        System.out.println("Do you want to favorite this recipe? Type 'yes' or 'no' ");
-                        if (in.nextLine().equals("yes")) {
-                            recipe_book.get(recipeIndex).setFavorite(true);
+                while(true) {
+                    try {
+                        searchIndex = Integer.parseInt(in.nextLine()) - 1;   
+                        currStep = 0;
+                        //print entire recipe
+                        for (Recipe r: recipe_book) {
+                            if (r.getName().equals(resList.get(searchIndex).getString())) {
+                                r.printAll(); 
+                                recipeIndex = recipe_book.indexOf(r);       
+                            }
                         }
-                        System.out.println("Enjoy! Type 'i' to view instructions individually");
+                        
+
+                        System.out.println("Enjoy! Type 'i' to view instructions individually."); 
+                        if (!recipe_book.get(recipeIndex).getFavorite()) {
+                            System.out.println("Type 'af' to add this recipe to your favorite list.");
+                        }
                         break;
-                    } catch (NumberFormatException ex)
-                    {
+                    }
+                    catch (NumberFormatException ex){
                         System.out.println("Oops. You should enter a number.");
                     }
                 }
@@ -199,7 +215,7 @@ public class RecipeBook  {
     }
 
     //builds recipe object
-    public static void parseRecipe(JSONObject recipe) {
+    public static void parseRecipe(JSONObject recipe)  {
         JSONArray ingre = (JSONArray) recipe.get("ingredients");
         String[] ingredients = new String[ingre.size()];
         JSONArray instr = (JSONArray) recipe.get("instructions");
@@ -230,6 +246,37 @@ public class RecipeBook  {
         return recipe_book.get(randomNum);
     }
 
+    public static void favoriteRecipe(int index) throws FileNotFoundException, IOException, ParseException{
+        FileWriter file = null;
+        Object obj = new JSONParser().parse(new FileReader("./recipebook.json")); 
+        JSONArray book = (JSONArray) obj;
+        // System.out.println()
+        JSONObject recipe = (JSONObject) book.get(index);
+        // System.out.println(recipe.get("name"));
+        recipe.put("favorite", true);
+        // System.out.println(recipe.get("favorite"));
+   
+        System.out.println("Successfully added to your favroite!");
+        try 
+        {
+             
+            file = new FileWriter("./recipebook.json");
+            file.write(book.toJSONString());
+            
+        } 
+        
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        } 
+        
+        finally 
+        {
+                file.flush();
+                file.close();
+        }
+
+    }
     public static void addRecipe(String name, String description, String[] ingredientsArr, String[] instructionsArr, String filename) throws FileNotFoundException, IOException, ParseException
     {
     	
