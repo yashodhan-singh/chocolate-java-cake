@@ -106,6 +106,9 @@ public class RecipeBook  {
                     catch (NumberFormatException ex){
                         System.out.println("Oops. You should enter a number.");
                     }
+                    catch (IndexOutOfBoundsException ex){
+                        System.out.println("Oops. Please enter a recipe number that is listed.");
+                    }
                 }
                 
                
@@ -181,6 +184,9 @@ public class RecipeBook  {
                     }
                     catch (NumberFormatException ex){
                         System.out.println("Oops. You should enter a number.");
+                    }
+                    catch (IndexOutOfBoundsException ex){
+                        System.out.println("Oops. Please enter a recipe number that is listed.");
                     }
                 }
               
