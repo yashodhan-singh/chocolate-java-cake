@@ -37,8 +37,13 @@ public class RecipeBook  {
                 System.out.println("'a' or 'add' to add a new recipe");
                 System.out.println("'r' or 'random' to get a recipe");
                 System.out.println("'f' or 'favorite' to get your favorite recipe list");
-                System.out.println("'s' or 'search' to search for a recipe");
+                System.out.println("'e' or 'exit' to exit the recipe book");
         	}
+
+            if(s.equals("e") || s.equals("exit")) {
+                System.exit(0);
+            }
+
         	// add new recipe
             if (s.equals("a") || s.equals("add")) {
                 System.out.println("What is the recipe name?");
@@ -72,7 +77,7 @@ public class RecipeBook  {
                     i++;
                 }
                 String[] instructionsArr = instructions.split("\n");
-                System.out.println("Success!");
+                System.out.println("Success! Type 'h' or 'help' to return to the help menu.");
               
                 addRecipe(name, description, ingredientsArr, instructionsArr, "./recipebook.json");
 
@@ -92,7 +97,7 @@ public class RecipeBook  {
                         //print entire recipe
                         recipe_book.get(recipeIndex).printAll();
 
-                        System.out.println("Enjoy! Type 'i' to view instructions individually."); 
+                        System.out.println("Enjoy! Type 'i' to view instructions individually or 'h' to return to the help menu."); 
                         if (!recipe_book.get(recipeIndex).getFavorite()) {
                             System.out.println("Type 'af' to add this recipe to your favorite list.");
                         }
@@ -184,25 +189,85 @@ public class RecipeBook  {
             }
             // get random recipe
             if (s.equals("r") || s.equals("random")) {
-                System.out.println("The random recipe for you today is " + getRandomRecipe().getName());
+                Recipe randomRecipe = getRandomRecipe();
+                System.out.println("The random recipe for you today is " + randomRecipe.getName());
+            
+                while(true) {
+                    try {
+                        // recipeIndex = Integer.parseInt(in.nextLine()) - 1;   
+                        currStep = 0;
+                        //print entire recipe
+                        randomRecipe.printAll();
+
+                        System.out.println("Enjoy! Type 'i' to view instructions individually or 'h' to return to the help menu."); 
+                        if (!randomRecipe.getFavorite()) {
+                            System.out.println("Type 'af' to add this recipe to your favorite list.");
+                        }
+                        break;
+                    }
+                    catch (NumberFormatException ex){
+                        System.out.println("Oops. You should enter a number.");
+                    }
+                }
+
             }
         	// get all favorite recipes
-            if (s.equals("f") || s.equals("favorite")) {
+            if (s.equals("f") || s.equals("favorite")) 
+            {
                 System.out.println("Here is your favorite list: \n");
+                int counterFav = 0;
+                int counterTotal = 0;
                 for (Recipe r: recipe_book) {
-                    
+                    counterTotal ++;
                     if (r.getFavorite()) {
-                        System.out.println(r.getName());
+                        counterFav ++;
+                        System.out.println(counterFav + ". " + r.getName());
                     }
                     
                 }
-                
+                System.out.println("If you would like to view one of these recipes, please enter the recipe's number!");
+
+                ArrayList<String> recipeNames = new ArrayList<String>();
+                for (Recipe r : recipe_book) {
+                    if (r.getFavorite())
+                    recipeNames.add(r.getName());
+                }
+
+                int searchIndex = 0;
+                while(true) 
+                {
+                    try 
+                    {
+                        searchIndex = Integer.parseInt(in.nextLine()) - 1;   
+                        currStep = 0;
+                        //print entire recipe
+                        for (Recipe r: recipe_book) 
+                        {
+                            if (r.getName().equals(recipeNames.get(searchIndex))) 
+                            {
+                                r.printAll(); 
+                                recipeIndex = recipe_book.indexOf(r);       
+                            }
+                        }
+
+
+                       System.out.println("Enjoy! Type 'i' to view instructions individually."); 
+                        if (!recipe_book.get(recipeIndex).getFavorite()) {
+                            System.out.println("Type 'af' to add this recipe to your favorite list.");
+                        }
+                        break;
+
+
+                    }
+                    catch (NumberFormatException ex){
+                        System.out.println("Oops. You should enter a number.");
+                    }
+                }
+                }
+
+
+                }
             }
-        } 
-        
-
-
-    }
 
     //reads json file
     public static void read_json(String filename) throws FileNotFoundException, IOException, ParseException {
@@ -256,7 +321,7 @@ public class RecipeBook  {
         recipe.put("favorite", true);
         // System.out.println(recipe.get("favorite"));
    
-        System.out.println("Successfully added to your favroite!");
+        System.out.println("Successfully added to your favorites!");
         try 
         {
              
